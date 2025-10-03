@@ -20,14 +20,13 @@ class Simple_SMTP_Database {
 		$table_name      = $wpdb->prefix . 'simple_smtp_settings';
 		$charset_collate = $wpdb->get_charset_collate();
 
-		// dbDelta requires direct SQL, not prepared statements
-		$sql = "CREATE TABLE IF NOT EXISTS {$table_name} (
+		$sql = "CREATE TABLE IF NOT EXISTS $table_name (
 			id bigint(20) unsigned NOT NULL AUTO_INCREMENT,
 			setting_key varchar(191) NOT NULL,
 			setting_value longtext NOT NULL,
-			PRIMARY KEY (id),
+			PRIMARY KEY  (id),
 			UNIQUE KEY setting_key (setting_key)
-		) {$charset_collate}";
+		) $charset_collate;";
 
 		require_once ABSPATH . 'wp-admin/includes/upgrade.php';
 		dbDelta( $sql );
@@ -68,7 +67,7 @@ class Simple_SMTP_Database {
 
 		$result = $wpdb->get_var(
 			$wpdb->prepare(
-				"SELECT setting_value FROM {$table_name} WHERE setting_key = %s",
+				"SELECT setting_value FROM $table_name WHERE setting_key = %s",
 				$key
 			)
 		);
@@ -121,7 +120,7 @@ class Simple_SMTP_Database {
 		$table_name = $wpdb->prefix . 'simple_smtp_settings';
 
 		$results = $wpdb->get_results(
-			"SELECT setting_key, setting_value FROM {$table_name}",
+			"SELECT setting_key, setting_value FROM $table_name",
 			ARRAY_A
 		);
 
@@ -140,6 +139,6 @@ class Simple_SMTP_Database {
 
 		$table_name = $wpdb->prefix . 'simple_smtp_settings';
 
-		$wpdb->query( "DROP TABLE IF EXISTS {$table_name}" );
+		$wpdb->query( "DROP TABLE IF EXISTS $table_name" );
 	}
 }
