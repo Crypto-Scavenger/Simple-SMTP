@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: Simple SMTP
+ * Plugin Name: Simple MT Protocol
  * Description: Lightweight SMTP plugin that redirects all WordPress emails through your SMTP server with easy configuration and testing capabilities.
  * Version: 1.0.1
  * Text Domain: simple-smtp
