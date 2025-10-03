@@ -1,29 +1,27 @@
 /**
- * Admin scripts for Simple SMTP
+ * Admin JavaScript for Simple SMTP
  *
  * @package SimpleSmtp
  * @since   1.0.0
  */
 
-(function($) {
+jQuery(document).ready(function($) {
 	'use strict';
 
-	$(document).ready(function() {
-		var smtpAuthCheckbox = $('#smtp_auth');
-		var adminWrapper = $('.simple-smtp-admin');
+	const $smtpAuth = $('#smtp_auth');
+	const $adminWrap = $('.simple-smtp-admin');
 
-		function toggleAuthFields() {
-			if (smtpAuthCheckbox.is(':checked')) {
-				adminWrapper.removeClass('smtp-auth-disabled');
-			} else {
-				adminWrapper.addClass('smtp-auth-disabled');
-			}
+	function toggleAuthFields() {
+		if ($smtpAuth.is(':checked')) {
+			$adminWrap.removeClass('smtp-auth-disabled');
+		} else {
+			$adminWrap.addClass('smtp-auth-disabled');
 		}
+	}
 
+	toggleAuthFields();
+
+	$smtpAuth.on('change', function() {
 		toggleAuthFields();
-
-		smtpAuthCheckbox.on('change', function() {
-			toggleAuthFields();
-		});
 	});
-})(jQuery);
+});
