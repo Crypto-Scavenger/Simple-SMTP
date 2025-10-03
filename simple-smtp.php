@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Simple SMTP
  * Description: Lightweight SMTP plugin that redirects all WordPress emails through your SMTP server with easy configuration and testing capabilities.
- * Version: 1.0.0
+ * Version: 1.0.1
  * Text Domain: simple-smtp
  * Domain Path: /languages
  * Requires at least: 6.2
@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'SIMPLE_SMTP_VERSION', '1.0.0' );
+define( 'SIMPLE_SMTP_VERSION', '1.0.1' );
 define( 'SIMPLE_SMTP_DIR', plugin_dir_path( __FILE__ ) );
 define( 'SIMPLE_SMTP_URL', plugin_dir_url( __FILE__ ) );
 
