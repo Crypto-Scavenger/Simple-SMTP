@@ -1,0 +1,53 @@
+/**
+ * Admin styles for Simple SMTP
+ *
+ * @package SimpleSmtp
+ * @since   1.0.0
+ */
+
+.simple-smtp-admin .form-table th {
+	width: 200px;
+	font-weight: 600;
+}
+
+.simple-smtp-admin .form-table td {
+	padding: 15px 10px;
+}
+
+.simple-smtp-admin .form-table .description {
+	margin-top: 8px;
+	color: #646970;
+	font-style: italic;
+}
+
+.simple-smtp-admin hr {
+	margin: 40px 0;
+	border: none;
+	border-top: 1px solid #dcdcde;
+}
+
+.simple-smtp-admin .smtp-auth-field {
+	display: table-row;
+}
+
+.simple-smtp-admin.smtp-auth-disabled .smtp-auth-field {
+	display: none;
+}
+
+@media screen and (max-width: 782px) {
+	.simple-smtp-admin .form-table th,
+	.simple-smtp-admin .form-table td {
+		display: block;
+		width: 100%;
+		padding: 10px;
+	}
+	
+	.simple-smtp-admin .form-table th {
+		padding-bottom: 5px;
+		border-bottom: 1px solid #dcdcde;
+	}
+	
+	.simple-smtp-admin .form-table td {
+		padding-top: 10px;
+	}
+}
