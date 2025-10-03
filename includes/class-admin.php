@@ -395,24 +395,20 @@ class Simple_SMTP_Admin {
 			wp_die( esc_html__( 'Security check failed', 'simple-smtp' ) );
 		}
 
-		$settings = array(
-			'smtp_enabled'         => isset( $_POST['smtp_enabled'] ) ? '1' : '0',
-			'smtp_host'            => isset( $_POST['smtp_host'] ) ? sanitize_text_field( wp_unslash( $_POST['smtp_host'] ) ) : '',
-			'smtp_port'            => isset( $_POST['smtp_port'] ) ? absint( $_POST['smtp_port'] ) : 587,
-			'smtp_encryption'      => isset( $_POST['smtp_encryption'] ) ? sanitize_text_field( wp_unslash( $_POST['smtp_encryption'] ) ) : 'tls',
-			'smtp_auth'            => isset( $_POST['smtp_auth'] ) ? '1' : '0',
-			'smtp_username'        => isset( $_POST['smtp_username'] ) ? sanitize_text_field( wp_unslash( $_POST['smtp_username'] ) ) : '',
-			'smtp_password'        => isset( $_POST['smtp_password'] ) ? wp_unslash( $_POST['smtp_password'] ) : '',
-			'from_email'           => isset( $_POST['from_email'] ) ? sanitize_email( wp_unslash( $_POST['from_email'] ) ) : '',
-			'from_name'            => isset( $_POST['from_name'] ) ? sanitize_text_field( wp_unslash( $_POST['from_name'] ) ) : '',
+		$settings_to_save = array(
+			'smtp_enabled'    => isset( $_POST['smtp_enabled'] ) ? '1' : '0',
+			'smtp_host'       => isset( $_POST['smtp_host'] ) ? sanitize_text_field( wp_unslash( $_POST['smtp_host'] ) ) : '',
+			'smtp_port'       => isset( $_POST['smtp_port'] ) ? absint( $_POST['smtp_port'] ) : '587',
+			'smtp_encryption' => isset( $_POST['smtp_encryption'] ) ? sanitize_text_field( wp_unslash( $_POST['smtp_encryption'] ) ) : 'tls',
+			'smtp_auth'       => isset( $_POST['smtp_auth'] ) ? '1' : '0',
+			'smtp_username'   => isset( $_POST['smtp_username'] ) ? sanitize_text_field( wp_unslash( $_POST['smtp_username'] ) ) : '',
+			'smtp_password'   => isset( $_POST['smtp_password'] ) ? sanitize_text_field( wp_unslash( $_POST['smtp_password'] ) ) : '',
+			'from_email'      => isset( $_POST['from_email'] ) ? sanitize_email( wp_unslash( $_POST['from_email'] ) ) : '',
+			'from_name'       => isset( $_POST['from_name'] ) ? sanitize_text_field( wp_unslash( $_POST['from_name'] ) ) : '',
 			'cleanup_on_uninstall' => isset( $_POST['cleanup_on_uninstall'] ) ? '1' : '0',
 		);
 
-		if ( ! in_array( $settings['smtp_encryption'], array( 'none', 'ssl', 'tls' ), true ) ) {
-			$settings['smtp_encryption'] = 'tls';
-		}
-
-		foreach ( $settings as $key => $value ) {
+		foreach ( $settings_to_save as $key => $value ) {
 			$this->database->save_setting( $key, $value );
 		}
 
